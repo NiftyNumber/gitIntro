@@ -1,4 +1,4 @@
-#* Local Git Repository
+#* Local Git Repository (.git file)
 #* Local File  --> Staging Area --> Local Git Rep
 #* Initialize git in the working directory.
 git init
@@ -33,3 +33,19 @@ git diff gitIntro.sh
 #* Rollback (checkout) to previous commit
 git checkout gitIntro.sh
 git checkout .
+
+#* Remote Git using GitHub
+#* User user name and access token to access GitHub in command line
+#* https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
+#* Local File --> Staging Area --commit--> Local Git Rep --git push--> Remote Git Rep (GitHub)
+#! Local and remote git rep and run parallel with each other
+
+#* create remote repository on GitHub
+#* origin is the name of the remote Git repository
+git remote add origin https://github.com/root931/gitIntro.git
+git branch -M master
+#* Push local repository to remote repository using the u option
+#* u option linkups remote and local repository
+#* master branch of remote location origin
+git push -u origin master
