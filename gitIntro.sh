@@ -18,6 +18,9 @@ git add gitIntro.sh
 #* Add all files in the Staging Area
 git add .
 
+#* Remove all files from the Staging Area 
+git rm --cached -r .
+
 #* Commit changes
 #! Commet in Present tense, you are doing it now
 git commit -m "Complete Initial Version"
@@ -49,3 +52,13 @@ git branch -M master
 #* u option linkups remote and local repository
 #* master branch of remote location origin
 git push -u origin master
+
+#* gitignore: prevent committing certain files to git
+#! do not let api/access token become public (there are bots that scans for sensitive info)
+#* .DS_Store files: store settings on macOS
+
+#* create gitignore
+touch .gitignore
+
+#* Add files you want to hide to .gitignore
+#* List of gitignore templates: https://github.com/github/gitignore

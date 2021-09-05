@@ -1,0 +1,8 @@
+# List the file names that you want git to ignore.
+secrets.txt
+text3_private.txt
+
+#Use wild cards
+#*.txt
+
+#* List of gitignore templates: https://github.com/github/gitignore
