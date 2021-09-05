@@ -1,4 +1,4 @@
-#* Local Git Repository (.git file)
+#! Local Git Repository (.git file)
 #* Local File  --> Staging Area --> Local Git Rep
 #* Initialize git in the working directory.
 git init
@@ -33,11 +33,11 @@ git log
 #* Check out the difference between curreent version and latest commit
 git diff gitIntro.sh
 
-#* Rollback (checkout) to previous commit
+#* Rollback to previous commit for specified files or all files
 git checkout gitIntro.sh
 git checkout .
 
-#* Remote Git using GitHub
+#! Remote Git using GitHub
 #* User user name and access token to access GitHub in command line
 #* https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
 
@@ -62,3 +62,17 @@ touch .gitignore
 
 #* Add files you want to hide to .gitignore
 #* List of gitignore templates: https://github.com/github/gitignore
+
+#! Cloning git repository
+git clone https://github.com/austinzheng/iOS-2048.git
+
+#! Creating new branch
+#! Use branch to develop new functionality and merge with master branch
+git branch subBranch1
+
+#* Check what branch you have
+git branch
+#! * indicates what branch you are currently on.
+
+#* Switching to subBranch1 from master branch
+git checkout subBranch1
