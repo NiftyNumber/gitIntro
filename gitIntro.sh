@@ -27,6 +27,7 @@ git commit -m "Complete Initial Version"
 
 # See what commit you have made
 git log
+#* exit log with 'q' or 'z'
 
 #* Unique commits are stored in hash: e.g. 37430d63b0560b569eea7f5c70e5e70a2385f871
 
@@ -74,5 +75,5 @@ git branch subBranch1
 git branch
 #! * indicates what branch you are currently on.
 
-#* Switching to subBranch1 from master branch
+#! Switching to subBranch1 from master branch
 git checkout subBranch1
