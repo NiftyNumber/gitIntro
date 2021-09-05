@@ -1,3 +1,5 @@
+#* Local Git Repository
+#* Local File  --> Staging Area --> Local Git Rep
 #* Initialize git in the working directory.
 git init
 
@@ -30,3 +32,4 @@ git diff gitIntro.sh
 
 #* Rollback (checkout) to previous commit
 git checkout gitIntro.sh
+git checkout .
