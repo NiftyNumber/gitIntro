@@ -77,3 +77,21 @@ git branch
 
 #! Switching to subBranch1 from master branch
 git checkout subBranch1
+
+#! Merge master and subBranch1
+#! Switch to master first then merge
+git merge subBranch1
+#* You can add merge information after the merge
+
+#! Pull request on GitHub
+#* Use pull request to pull branches to merge with master branch.
+#* Also possible with command line: https://stackoverflow.com/questions/46480796/git-syntax-for-pull-request-on-the-command-line
+
+#! If you made changes on GitHub do the following to sync with local git rep
+#* https://www.koskila.net/how-to-git-merge-upstream/
+
+git remote add upstream https://github.com/root931/gitIntro.git
+git fetch upstream
+git merge upstream/master
+
+#! https://learngitbranching.js.org/
