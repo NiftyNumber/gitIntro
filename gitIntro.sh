@@ -73,7 +73,7 @@ git branch subBranch1
 
 #* Check what branch you have
 git branch
-#! * indicates what branch you are currently on.
+#! asterisk indicates what branch you are currently on.
 
 #! Switching to subBranch1 from master branch
 git checkout subBranch1
@@ -95,3 +95,45 @@ git fetch upstream
 git merge upstream/master
 
 #! https://learngitbranching.js.org/
+#! Git Rebase
+#* Rebase takes a set of commits, "copies" them and plops them in front of somewhere else.
+#* Rebase makes the commits linear instead of have multiple branches.
+git checkout subBranch1
+#* Takes commits from subBranch1 and put in front to master
+git rebase master
+
+#! HEAD: currently checked out commit (HEAD is a commit, similar to a hash)
+#* HEAD always points to the most recent commit
+#* Detaching HEAD: attach HEAD to a commit hash instead of a branch
+#* hash represent the commit
+git checkout 37430d63b0560b569eea7f5c70e5e70a2385f871
+
+#! Relative Refs
+#* Caret (^) operator: find the parent of the specified commit (go backwards one commit in the commit tree)
+#* First parent of main
+git chekcout main^
+
+#* tilde (~) operator: takes a number that specifies the number of parents you would like to go backwards.
+#! -f option: reassign a branch to a commit (commit position relative to HEAD or hash)
+#* Move main branch to three parents behind HEAD's position.
+git branch -f main HEAD~3
+#* Move main branch to commit with hash.
+git branch -f main 37430d63b0560b569eea7f5c70e5e70a2385f871
+
+
+#! Reversing Changes in Git
+#* git reset: move a branch backwards as if the commit had NEVER been made in the first place. Applies to local git repository.
+git reset HEAD~1
+
+#* git revert: reverse changes and share those reversed changes with others.
+#* git revert makes new commit that reverses the specified commit
+git revert HEAD
+
+#! Git Cherry-pick: copy a series of commits below HEAD
+#* git cherry-pick <commit1-hash> <commit3-hash>
+git cherry-pick C3 C4 C7
+
+#! Git Interactive Rebase: review a series of commits you are about to rebase
+#* use the -i option to rebase
+#* rebase in front of position 4 parents before HEAD
+git rebase -i HEAD~4
