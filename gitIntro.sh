@@ -67,7 +67,7 @@ touch .gitignore
 #! Cloning git repository
 git clone https://github.com/austinzheng/iOS-2048.git
 
-#! Creating new branch
+#! Creating new branch reference
 #! Use branch to develop new functionality and merge with master branch
 git branch subBranch1
 
@@ -99,21 +99,27 @@ git merge upstream/master
 #* Rebase takes a set of commits, "copies" them and plops them in front of somewhere else.
 #* Rebase makes the commits linear instead of have multiple branches.
 git checkout subBranch1
-#* Takes commits from subBranch1 and put in front to master
-git rebase master
+#! Takes commits from subBranch1 and put in front to master
+git rebase master subBranch1
 
 #! HEAD: currently checked out commit (HEAD is a commit, similar to a hash)
+#! checkout moves the HEAD
 #* HEAD always points to the most recent commit
 #* Detaching HEAD: attach HEAD to a commit hash instead of a branch
 #* hash represent the commit
 git checkout 37430d63b0560b569eea7f5c70e5e70a2385f871
+git checkout C1
+git checkout main
+git commit
+git checkout C2
 
 #! Relative Refs
 #* Caret (^) operator: find the parent of the specified commit (go backwards one commit in the commit tree)
-#* First parent of main
+#! Move HEAD from main to first parent
 git chekcout main^
 
-#* tilde (~) operator: takes a number that specifies the number of parents you would like to go backwards.
+#! tilde (~) operator: takes a number that specifies the number of parents you would like to go backwards.
+#! ~ Move HEAD backwards in same branch
 #! -f option: reassign a branch to a commit (commit position relative to HEAD or hash)
 #* Move main branch to three parents behind HEAD's position.
 git branch -f main HEAD~3
@@ -129,11 +135,58 @@ git reset HEAD~1
 #* git revert makes new commit that reverses the specified commit
 git revert HEAD
 
-#! Git Cherry-pick: copy a series of commits below HEAD
+#! Git Cherry-pick: copy a series of commits in front of HEAD
 #* git cherry-pick <commit1-hash> <commit3-hash>
 git cherry-pick C3 C4 C7
 
 #! Git Interactive Rebase: review a series of commits you are about to rebase
-#* use the -i option to rebase
+#* use the -i option to rebase (lauches vim)
 #* rebase in front of position 4 parents before HEAD
 git rebase -i HEAD~4
+
+#! Juggling Commits: make changes to previous commits
+#! Note: reorder commits with rebase -i
+#* RE-order commits so the one we want to change is on top
+git rebase -i HEAD~2
+#* git commit --amend to make modification
+git commit --amend
+#* move main to updated part of the tree
+git rebase -i HEAD~2
+
+#!! Move main to updated part of the tree
+git branch -f main
+#!! Move branch three to target commit C2
+git branch -f three C2
+
+#! Juggling Commits2
+#! Note: reorder with git cherry-pick
+#* Move HEAD backwards 2 steps (to main)
+git checkout main
+git cherry-pick C2
+git commit --amend
+git cherry-pick C3
+
+#! Git Tags: anchors, for major release and big merges
+#* You cannot checkout a tag
+#* Tag v1 to commit 1
+git tag v1 C1
+
+#! Git Describe: where you are relative the anchor
+git describe <ref>
+#*output: <tag>_<numCommits>_g<hash>
+
+#! ^modifier: specifies which parent reference to follow from a merge commit
+#! ^ move to 
+#* Git will normally follow the first parent upwards from a merge commit
+#* Move HEAD from main to first parent
+git checkout main^
+#* Move HEAD from main to second parent
+git checkout main^2
+#* MOve HEAD backwards twice in the same branch
+git checkout HEAD~2
+
+#* Chained modifiers: move HEAD backwards 1 step, select 2nd parent, move HEAD backwards 2 steps
+git checkout HEAD~^2~2
+
+#*Create branch reference at targeted location
+git branch bugWork main^^2^
