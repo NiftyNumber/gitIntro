@@ -172,8 +172,12 @@ git cherry-pick C3
 git tag v1 C1
 
 #! Git Describe: where you are relative the anchor
-git describe <ref>
+git describe <branch-ref>
+git describe main
 #*output: <tag>_<numCommits>_g<hash>
+
+#*Remove tag
+git tag -d v1
 
 #! ^modifier: specifies which parent reference to follow from a merge commit
 #! ^ move to 
@@ -190,3 +194,23 @@ git checkout HEAD~^2~2
 
 #*Create branch reference at targeted location
 git branch bugWork main^^2^
+
+#! Git Remote
+
+#! git clone: create local copies of remote repo
+#* Remote branches have the special property that when you check them out, you are put into detached HEAD mode
+
+#* Remoate branch naming: <remote name>/<branch name>
+#* remote is often names as origin
+
+#! git fetch: downloads the commits that the remote has but are missing from our local repository, and updates where our remote branches point (for instance, o/main). git fetch essentially brings our local representation of the remote repository into synchronization with what the actual remote repository looks like (right now).
+#! git fetch does not change anything about your local state. It will not update your main branch or change anything about how your file system looks right now.
+
+#! git pull: git pull is essentially shorthand for a git fetch followed by a merge of whatever branch was just fetched.
+#* git pull is equivalent to the following
+git fetch
+git merge origin/main
+
+#! git push: git push is responsible for uploading your changes to a specified remote and updating that remote to incorporate your new commits.
+
+#! Diverged Work
