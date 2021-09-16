@@ -214,3 +214,9 @@ git merge origin/main
 #! git push: git push is responsible for uploading your changes to a specified remote and updating that remote to incorporate your new commits.
 
 #! Diverged Work
+#* To be continue
+
+#! clone is local, fork is remote
+#! git clone: copy data from remote repository to local repository
+#! Forking: Creating a remote copy of a remote repository and have full control (forked copy)
+#! Use pull request to suggest the owner of the original remote repository to make changes to merge with forked copy
